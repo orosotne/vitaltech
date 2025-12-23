@@ -77,7 +77,7 @@ app.post('/api/contact', async (req, res) => {
 });
 
 // Logo URL - for local dev
-const LOGO_URL = 'https://vitaltech.vercel.app/white.svg';
+const LOGO_URL = 'https://vitaltech.vercel.app/logo_vitaltech_-01.png';
 
 // Customer confirmation email template
 function generateCustomerEmail({ name, serviceName, message }) {
@@ -121,10 +121,7 @@ function generateCustomerEmail({ name, serviceName, message }) {
           <tr>
             <td style="padding: 40px 40px 20px 40px; text-align: center;">
               <div style="display: inline-block; background-color: #ecfdf5; border-radius: 50%; padding: 20px;">
-                <!-- SVG as image to ensure rendering -->
-                <img src="https://vitaltech.vercel.app/images/check-circle.png" alt="Success" width="48" style="display: block;" onError="this.style.display='none'" />
-                <!-- Fallback if image fails (some clients block images) -->
-                <p style="margin:0; font-size: 32px; line-height: 1;">✅</p>
+                <p style="margin:0; font-size: 48px; line-height: 1;">✅</p>
               </div>
             </td>
           </tr>
