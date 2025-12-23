@@ -4,32 +4,27 @@ import React from 'react';
 const partners = [
   { 
     name: 'Fortinet', 
-    logo: '/images/partners/fortinet.svg',
+    logo: '/images/partners/fortinet-logo.svg',
     website: 'https://www.fortinet.com/'
   },
   { 
     name: 'Cisco Networking Academy', 
-    logo: '/images/partners/cisco-netacad.svg',
+    logo: '/images/partners/netacad_logo_black.svg',
     website: 'https://www.netacad.com/'
   },
   { 
     name: 'Palo Alto Networks', 
-    logo: '/images/partners/paloalto.svg',
+    logo: '/images/partners/pan-logo-light.svg',
     website: 'https://www.paloaltonetworks.com/'
   },
   { 
-    name: 'CSFIT', 
-    logo: '/images/partners/csfit.svg',
-    website: 'https://csfit.sk/'
-  },
-  { 
     name: 'Lenovo', 
-    logo: '/images/partners/lenovo.svg',
+    logo: '/images/partners/lenovo.avif',
     website: 'https://www.lenovo.com/sk/sk/'
   },
   { 
     name: 'Datacomp', 
-    logo: '/images/partners/datacomp.svg',
+    logo: '/images/partners/datacomp_white.svg',
     website: 'https://datacomp.sk/'
   },
 ];
