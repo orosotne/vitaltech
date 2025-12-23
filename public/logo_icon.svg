@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 71.55 71.55">
+  <defs>
+    <linearGradient id="icon-gradient" x1="0%" y1="50%" x2="100%" y2="50%">
+      <animate attributeName="x1" values="0%;100%;0%" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="x2" values="100%;200%;100%" dur="4s" repeatCount="indefinite"/>
+      <stop offset=".04" stop-color="#0f3233"/>
+      <stop offset=".08" stop-color="#0f3d3c"/>
+      <stop offset=".2" stop-color="#11605b"/>
+      <stop offset=".33" stop-color="#137e74"/>
+      <stop offset=".46" stop-color="#149487"/>
+      <stop offset=".61" stop-color="#15a495"/>
+      <stop offset=".77" stop-color="#15ae9d"/>
+      <stop offset="1" stop-color="#16b1a0"/>
+    </linearGradient>
+    <linearGradient id="icon-gradient-2" x1="0%" y1="50%" x2="100%" y2="50%">
+      <animate attributeName="x1" values="0%;100%;0%" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="x2" values="100%;200%;100%" dur="4s" repeatCount="indefinite"/>
+      <stop offset=".04" stop-color="#d4a574"/>
+      <stop offset=".2" stop-color="#e8c4a0"/>
+      <stop offset=".5" stop-color="#f5dfc7"/>
+      <stop offset=".8" stop-color="#e8c4a0"/>
+      <stop offset="1" stop-color="#d4a574"/>
+    </linearGradient>
+  </defs>
+  <!-- Upper part of circle (sky/beige gradient) -->
+  <path fill="url(#icon-gradient-2)" d="M67.77,24.94c-.92.05-1.9.18-2.91.43-12.4,3.09-12.87,9.71-22.31,9.59-14.88-.18-15.22-9.59-28.78-9.77-4.38-.06-8.06.97-10.65,1.96C6.92,12.68,20.1,2,35.77,2c14.86,0,27.48,9.6,32,22.94Z"/>
+  <!-- Lower part of circle (teal gradient) -->
+  <path fill="url(#icon-gradient)" d="M69.55,35.77c0,18.65-15.12,33.77-33.77,33.77S2,54.43,2,35.77c0-2.98.39-5.87,1.11-8.62,2.59-.99,6.27-2.02,10.65-1.96,13.56.18,13.91,9.59,28.78,9.77,9.45.11,9.92-6.5,22.31-9.59,1.02-.25,1.99-.38,2.91-.43,1.15,3.4,1.78,7.04,1.78,10.84Z"/>
+  <!-- Wave overlay -->
+  <path fill="url(#icon-gradient)" opacity="0.6" d="M69.01,41.79c-2.84,15.78-16.64,27.76-33.24,27.76-17.45,0-31.8-13.23-33.59-30.2,3.66-2.1,8.78-4.24,14.9-4.31,17.48-.2,26.36,16.78,40.15,14.23,3.09-.57,7.28-2.28,11.77-7.48Z"/>
+  <!-- Additional wave layer -->
+  <path fill="url(#icon-gradient)" opacity="0.4" d="M69.55,35.78c0,18.65-15.12,33.77-33.77,33.77-13.19,0-24.62-7.57-30.17-18.59,4.37,3.04,10.57,6.36,17.94,5.96,18.09-.98,24.58-15.83,45.59-26.45.28,1.73.42,3.5.42,5.31Z"/>
+</svg>
+
