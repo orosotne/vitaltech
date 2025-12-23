@@ -67,6 +67,11 @@ export default async function handler(req, res) {
   }
 }
 
+// Logo URL - using a reliable public URL or embedded SVG fallback logic would be here,
+// but for email clients, a hosted image is best.
+// Using the raw GitHub content URL or your Vercel URL is a good bet.
+const LOGO_URL = 'https://vitaltech.sk/logo_vitaltech.svg'; // Assuming this is accessible
+
 // Customer confirmation email template
 function generateCustomerEmail({ name, serviceName, message }) {
   const firstName = name.split(' ')[0];
@@ -78,110 +83,113 @@ function generateCustomerEmail({ name, serviceName, message }) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Potvrdenie dopytu | Vitaltech</title>
+  <!--[if mso]>
+  <noscript>
+    <xml>
+      <o:OfficeDocumentSettings>
+        <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+    </xml>
+  </noscript>
+  <![endif]-->
+  <style>
+    body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; color: #334155; }
+    table { border-collapse: collapse; }
+    .content-box { background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+    .header { background-color: #0f172a; padding: 40px 20px; text-align: center; }
+    .main-content { padding: 40px; }
+    .footer { background-color: #0f172a; padding: 30px; text-align: center; color: #94a3b8; font-size: 14px; }
+    .button { display: inline-block; padding: 12px 24px; background-color: #0d9488; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; margin-top: 20px; }
+    .message-box { background-color: #f1f5f9; border-radius: 12px; padding: 20px; margin: 24px 0; border-left: 4px solid #0d9488; }
+    .step-number { width: 32px; height: 32px; background-color: #0d9488; color: white; border-radius: 50%; text-align: center; line-height: 32px; font-weight: bold; display: inline-block; margin-right: 15px; }
+    .step-item { margin-bottom: 20px; }
+    
+    /* Dark mode override */
+    @media (prefers-color-scheme: dark) {
+      .content-box { background-color: #ffffff !important; color: #334155 !important; }
+      h1, h2, h3, p, td { color: #334155 !important; }
+      .header h1 { color: #ffffff !important; }
+      .footer p, .footer a { color: #94a3b8 !important; }
+    }
+  </style>
 </head>
-<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; color: #1e293b;">
-  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color: #f8fafc; padding: 40px 20px;">
+<body style="margin: 0; padding: 0; background-color: #f8fafc;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color: #f8fafc; padding: 40px 10px;">
     <tr>
       <td align="center">
-        <table role="presentation" width="600" cellspacing="0" cellpadding="0" style="background-color: #ffffff; border-radius: 24px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+        <!-- Main Container -->
+        <table role="presentation" width="600" cellspacing="0" cellpadding="0" class="content-box" style="background-color: #ffffff; width: 100%; max-width: 600px; margin: 0 auto; border-radius: 16px; overflow: hidden;">
           
-          <!-- Header -->
+          <!-- Header with Logo -->
           <tr>
-            <td style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 40px; text-align: center;">
-              <img src="https://vitaltech.sk/logo_vitaltech.svg" alt="Vitaltech" style="height: 40px; margin-bottom: 20px;" />
-              <h1 style="color: #ffffff; font-size: 28px; font-weight: 700; margin: 0; letter-spacing: -0.5px;">
-                Ďakujeme za váš dopyt!
-              </h1>
+            <td class="header" style="background-color: #0f172a; padding: 40px 20px; text-align: center;">
+              <!-- Using img tag with width for Outlook compatibility -->
+              <img src="https://vitaltech.vercel.app/white.svg" alt="Vitaltech" width="180" style="display: block; margin: 0 auto; width: 180px; height: auto; border: 0;" />
             </td>
           </tr>
           
-          <!-- Success Icon -->
+          <!-- Success Message -->
           <tr>
-            <td style="padding: 40px 40px 20px 40px; text-align: center;">
-              <div style="display: inline-block; background-color: #ecfdf5; border-radius: 50%; padding: 20px;">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-            </td>
-          </tr>
-          
-          <!-- Main Content -->
-          <tr>
-            <td style="padding: 0 40px 40px 40px;">
-              <p style="font-size: 18px; color: #475569; margin: 0 0 24px 0; text-align: center;">
-                Dobrý deň, <strong style="color: #0f172a;">${firstName}</strong>!
-              </p>
-              <p style="font-size: 16px; color: #64748b; line-height: 1.6; margin: 0 0 24px 0; text-align: center;">
-                Váš dopyt ohľadom <strong style="color: #0d9488;">${serviceName}</strong> sme úspešne prijali. 
-                Náš kolega vás bude kontaktovať <strong>do 24 hodín</strong>.
-              </p>
-              
-              <!-- Message Box -->
-              <div style="background-color: #f1f5f9; border-radius: 16px; padding: 24px; margin: 24px 0;">
-                <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; margin: 0 0 12px 0; font-weight: 600;">
-                  Vaša správa
-                </p>
-                <p style="font-size: 15px; color: #475569; line-height: 1.6; margin: 0; font-style: italic;">
-                  "${message}"
-                </p>
-              </div>
-            </td>
-          </tr>
-          
-          <!-- What's Next Section -->
-          <tr>
-            <td style="background-color: #f8fafc; padding: 32px 40px;">
-              <h3 style="font-size: 16px; color: #0f172a; margin: 0 0 20px 0; font-weight: 600;">
-                Čo bude nasledovať?
-              </h3>
+            <td class="main-content" style="padding: 40px 30px;">
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
                 <tr>
-                  <td style="padding-bottom: 16px;">
-                    <table role="presentation" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td style="vertical-align: top; padding-right: 16px;">
-                          <div style="width: 28px; height: 28px; background-color: #0d9488; border-radius: 50%; text-align: center; line-height: 28px; color: white; font-weight: bold; font-size: 14px;">1</div>
-                        </td>
-                        <td style="vertical-align: top;">
-                          <p style="margin: 0; color: #475569; font-size: 14px; line-height: 1.5;">
-                            <strong style="color: #0f172a;">Kontakt od nášho tímu</strong><br/>
-                            Ozveme sa vám do 24 hodín na dohodnutie detailov.
-                          </p>
-                        </td>
-                      </tr>
-                    </table>
+                  <td align="center" style="padding-bottom: 24px;">
+                    <h1 style="margin: 0; font-size: 24px; color: #0f172a; font-weight: 700;">Ďakujeme za váš dopyt!</h1>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 16px;">
-                    <table role="presentation" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td style="vertical-align: top; padding-right: 16px;">
-                          <div style="width: 28px; height: 28px; background-color: #64748b; border-radius: 50%; text-align: center; line-height: 28px; color: white; font-weight: bold; font-size: 14px;">2</div>
-                        </td>
-                        <td style="vertical-align: top;">
-                          <p style="margin: 0; color: #475569; font-size: 14px; line-height: 1.5;">
-                            <strong style="color: #0f172a;">Príprava ponuky</strong><br/>
-                            Na základe konzultácie pripravíme ponuku na mieru.
-                          </p>
-                        </td>
-                      </tr>
-                    </table>
+                  <td align="left">
+                    <p style="margin: 0 0 16px 0; font-size: 16px; line-height: 1.6; color: #334155;">
+                      Dobrý deň, <strong>${firstName}</strong>,
+                    </p>
+                    <p style="margin: 0 0 24px 0; font-size: 16px; line-height: 1.6; color: #334155;">
+                      Váš záujem o službu <strong style="color: #0d9488;">${serviceName}</strong> si veľmi vážime. 
+                      Správu sme úspešne prijali a už sa jej venujeme.
+                    </p>
                   </td>
                 </tr>
+                
+                <!-- User's Message Review -->
                 <tr>
                   <td>
-                    <table role="presentation" cellspacing="0" cellpadding="0">
+                    <div class="message-box" style="background-color: #f1f5f9; padding: 20px; border-radius: 12px; margin: 10px 0 30px 0; border-left: 4px solid #0d9488;">
+                      <p style="margin: 0 0 8px 0; font-size: 12px; text-transform: uppercase; color: #64748b; font-weight: 700; letter-spacing: 0.5px;">Vaša správa:</p>
+                      <p style="margin: 0; font-size: 15px; font-style: italic; color: #334155; line-height: 1.5;">"${message}"</p>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Next Steps -->
+                <tr>
+                  <td>
+                    <h3 style="margin: 0 0 20px 0; font-size: 18px; color: #0f172a;">Čo bude nasledovať?</h3>
+                    
+                    <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="margin-bottom: 15px;">
                       <tr>
-                        <td style="vertical-align: top; padding-right: 16px;">
-                          <div style="width: 28px; height: 28px; background-color: #64748b; border-radius: 50%; text-align: center; line-height: 28px; color: white; font-weight: bold; font-size: 14px;">3</div>
+                        <td width="50" valign="top" style="padding-bottom: 20px;">
+                          <div style="background-color: #0d9488; width: 32px; height: 32px; border-radius: 50%; color: #ffffff; text-align: center; line-height: 32px; font-weight: bold;">1</div>
                         </td>
-                        <td style="vertical-align: top;">
-                          <p style="margin: 0; color: #475569; font-size: 14px; line-height: 1.5;">
-                            <strong style="color: #0f172a;">Začíname spoluprácu</strong><br/>
-                            Po schválení rozbehnem realizáciu projektu.
-                          </p>
+                        <td valign="top" style="padding-bottom: 20px;">
+                          <strong style="display: block; color: #0f172a; margin-bottom: 4px;">Kontakt od nášho tímu</strong>
+                          <span style="color: #475569; font-size: 14px;">Ozveme sa vám do 24 hodín na dohodnutie detailov.</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="50" valign="top" style="padding-bottom: 20px;">
+                          <div style="background-color: #cbd5e1; width: 32px; height: 32px; border-radius: 50%; color: #475569; text-align: center; line-height: 32px; font-weight: bold;">2</div>
+                        </td>
+                        <td valign="top" style="padding-bottom: 20px;">
+                          <strong style="display: block; color: #0f172a; margin-bottom: 4px;">Príprava ponuky</strong>
+                          <span style="color: #475569; font-size: 14px;">Na základe konzultácie pripravíme riešenie na mieru.</span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td width="50" valign="top">
+                          <div style="background-color: #cbd5e1; width: 32px; height: 32px; border-radius: 50%; color: #475569; text-align: center; line-height: 32px; font-weight: bold;">3</div>
+                        </td>
+                        <td valign="top">
+                          <strong style="display: block; color: #0f172a; margin-bottom: 4px;">Realizácia</strong>
+                          <span style="color: #475569; font-size: 14px;">Po schválení sa pustíme do práce.</span>
                         </td>
                       </tr>
                     </table>
@@ -193,31 +201,28 @@ function generateCustomerEmail({ name, serviceName, message }) {
           
           <!-- Footer -->
           <tr>
-            <td style="background-color: #0f172a; padding: 32px 40px; text-align: center;">
-              <p style="color: #94a3b8; font-size: 14px; margin: 0 0 16px 0;">
-                Máte otázky? Neváhajte nás kontaktovať.
-              </p>
-              <table role="presentation" cellspacing="0" cellpadding="0" style="margin: 0 auto;">
+            <td class="footer" style="background-color: #0f172a; padding: 40px 20px; text-align: center;">
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
                 <tr>
-                  <td style="padding: 0 12px;">
-                    <a href="tel:+421908051379" style="color: #ffffff; text-decoration: none; font-size: 14px;">
-                      📞 +421 908 051 379
-                    </a>
+                  <td align="center" style="padding-bottom: 20px;">
+                     <a href="https://vitaltech.sk" style="text-decoration: none; color: #ffffff; font-weight: bold; font-size: 16px;">www.vitaltech.sk</a>
                   </td>
-                  <td style="padding: 0 12px;">
-                    <a href="mailto:info@vitaltech.sk" style="color: #ffffff; text-decoration: none; font-size: 14px;">
-                      ✉️ info@vitaltech.sk
-                    </a>
+                </tr>
+                <tr>
+                  <td align="center" style="color: #94a3b8; font-size: 14px; line-height: 1.6;">
+                    Vitaltech s.r.o.<br>
+                    Landererova 8, 811 09 Bratislava<br>
+                    <a href="mailto:info@vitaltech.sk" style="color: #0d9488; text-decoration: none;">info@vitaltech.sk</a> | <a href="tel:+421908051379" style="color: #0d9488; text-decoration: none;">+421 908 051 379</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center" style="padding-top: 20px; color: #64748b; font-size: 12px;">
+                    © ${new Date().getFullYear()} Vitaltech s.r.o. Všetky práva vyhradené.
                   </td>
                 </tr>
               </table>
-              <hr style="border: none; border-top: 1px solid #334155; margin: 24px 0;" />
-              <p style="color: #64748b; font-size: 12px; margin: 0;">
-                © ${new Date().getFullYear()} Vitaltech s.r.o. | Landererova 8, 811 09 Bratislava
-              </p>
             </td>
           </tr>
-          
         </table>
       </td>
     </tr>
@@ -235,76 +240,78 @@ function generateTeamNotificationEmail({ name, company, email, phone, serviceNam
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nový dopyt</title>
 </head>
-<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f8fafc; color: #1e293b;">
-  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color: #f8fafc; padding: 40px 20px;">
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f1f5f9; color: #334155;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color: #f1f5f9; padding: 40px 10px;">
     <tr>
       <td align="center">
-        <table role="presentation" width="600" cellspacing="0" cellpadding="0" style="background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+        <table role="presentation" width="600" cellspacing="0" cellpadding="0" style="background-color: #ffffff; width: 100%; max-width: 600px; margin: 0 auto; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
           
           <!-- Header -->
           <tr>
-            <td style="background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%); padding: 24px 32px;">
-              <h1 style="color: #ffffff; font-size: 20px; font-weight: 600; margin: 0;">
-                🔔 Nový dopyt z webu
-              </h1>
+            <td style="background-color: #0d9488; padding: 25px 30px;">
+              <h2 style="margin: 0; color: #ffffff; font-size: 20px; font-weight: 600;">🔔 Nový dopyt z webu</h2>
             </td>
           </tr>
           
           <!-- Content -->
           <tr>
-            <td style="padding: 32px;">
+            <td style="padding: 30px;">
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                
+                <!-- Service -->
                 <tr>
-                  <td style="padding-bottom: 16px; border-bottom: 1px solid #e2e8f0;">
-                    <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; margin: 0 0 4px 0;">Služba</p>
-                    <p style="font-size: 16px; color: #0d9488; font-weight: 600; margin: 0;">${serviceName}</p>
+                  <td style="padding-bottom: 20px; border-bottom: 1px solid #e2e8f0;">
+                    <p style="margin: 0 0 5px 0; font-size: 12px; text-transform: uppercase; color: #94a3b8; font-weight: 600; letter-spacing: 0.5px;">Služba</p>
+                    <p style="margin: 0; font-size: 18px; color: #0d9488; font-weight: 700;">${serviceName}</p>
                   </td>
                 </tr>
+
+                <!-- Contact Info -->
                 <tr>
-                  <td style="padding: 16px 0; border-bottom: 1px solid #e2e8f0;">
-                    <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; margin: 0 0 4px 0;">Kontakt</p>
-                    <p style="font-size: 16px; color: #0f172a; font-weight: 600; margin: 0;">${name}</p>
-                    ${company ? `<p style="font-size: 14px; color: #64748b; margin: 4px 0 0 0;">${company}</p>` : ''}
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding: 16px 0; border-bottom: 1px solid #e2e8f0;">
+                  <td style="padding: 20px 0; border-bottom: 1px solid #e2e8f0;">
                     <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
                       <tr>
-                        <td width="50%">
-                          <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; margin: 0 0 4px 0;">Email</p>
-                          <a href="mailto:${email}" style="font-size: 14px; color: #0d9488; text-decoration: none;">${email}</a>
+                        <td width="50%" valign="top">
+                          <p style="margin: 0 0 5px 0; font-size: 12px; text-transform: uppercase; color: #94a3b8; font-weight: 600;">Meno</p>
+                          <p style="margin: 0 0 15px 0; font-size: 16px; color: #1e293b; font-weight: 600;">${name}</p>
+                          
+                          <p style="margin: 0 0 5px 0; font-size: 12px; text-transform: uppercase; color: #94a3b8; font-weight: 600;">Firma</p>
+                          <p style="margin: 0; font-size: 16px; color: #1e293b;">${company || '-'}</p>
                         </td>
-                        <td width="50%">
-                          <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; margin: 0 0 4px 0;">Telefón</p>
-                          ${phone ? `<a href="tel:${phone}" style="font-size: 14px; color: #0d9488; text-decoration: none;">${phone}</a>` : '<span style="color: #94a3b8;">-</span>'}
+                        <td width="50%" valign="top">
+                          <p style="margin: 0 0 5px 0; font-size: 12px; text-transform: uppercase; color: #94a3b8; font-weight: 600;">Email</p>
+                          <p style="margin: 0 0 15px 0; font-size: 16px; color: #0d9488;"><a href="mailto:${email}" style="color: #0d9488; text-decoration: none;">${email}</a></p>
+                          
+                          <p style="margin: 0 0 5px 0; font-size: 12px; text-transform: uppercase; color: #94a3b8; font-weight: 600;">Telefón</p>
+                          <p style="margin: 0; font-size: 16px; color: #1e293b;">${phone || '-'}</p>
                         </td>
                       </tr>
                     </table>
                   </td>
                 </tr>
+
+                <!-- Message -->
                 <tr>
-                  <td style="padding-top: 16px;">
-                    <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #94a3b8; margin: 0 0 8px 0;">Správa</p>
-                    <div style="background-color: #f8fafc; border-radius: 12px; padding: 16px; border-left: 4px solid #0d9488;">
-                      <p style="font-size: 15px; color: #475569; line-height: 1.6; margin: 0; white-space: pre-wrap;">${message}</p>
+                  <td style="padding-top: 20px;">
+                    <p style="margin: 0 0 10px 0; font-size: 12px; text-transform: uppercase; color: #94a3b8; font-weight: 600;">Správa</p>
+                    <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; border: 1px solid #e2e8f0;">
+                      <p style="margin: 0; font-size: 15px; color: #475569; line-height: 1.6; white-space: pre-wrap;">${message}</p>
                     </div>
                   </td>
                 </tr>
+
               </table>
             </td>
           </tr>
           
           <!-- Footer -->
           <tr>
-            <td style="background-color: #f1f5f9; padding: 20px 32px; text-align: center;">
-              <p style="color: #64748b; font-size: 12px; margin: 0;">
-                Automaticky odoslané z kontaktného formulára na vitaltech.sk
-              </p>
+            <td style="background-color: #f8fafc; padding: 15px 30px; text-align: center; border-top: 1px solid #e2e8f0;">
+              <p style="margin: 0; color: #94a3b8; font-size: 12px;">Odoslané z kontaktného formulára na vitaltech.sk</p>
             </td>
           </tr>
-          
         </table>
       </td>
     </tr>
@@ -313,4 +320,3 @@ function generateTeamNotificationEmail({ name, company, email, phone, serviceNam
 </html>
   `;
 }
-

@@ -4,7 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vitaltech Business Card</title>
+    <!-- Importing Sora font - distinctive and modern -->
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --vital-dark: #0D3B3E;
+            --vital-yellow: #FCB016;
+            --vital-green: #006D65;
+            --vital-green-light: #00A89C;
+            --text-secondary: #475569;
+            --bg-light: #f0f2f5;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             margin: 0;
             padding: 40px;
@@ -12,8 +27,8 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #f0f2f5;
-            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #e8f5f4 0%, #f0f2f5 50%, #fef9e7 100%);
+            font-family: 'Sora', sans-serif;
         }
 
         /* Business Card Container - Exact dimensions for print (85mm x 55mm) */
@@ -22,12 +37,24 @@
             height: 55mm;
             position: relative;
             background: white;
-            border-radius: 0; /* Sharp edges for print, or small radius if desired */
+            border-radius: 4px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 40px rgba(0, 109, 101, 0.15), 0 4px 12px rgba(0, 0, 0, 0.08);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            animation: cardAppear 0.6s ease-out;
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
         }
 
         /* Top Section with Logo */
@@ -35,33 +62,63 @@
             padding: 6mm 8mm 0;
             display: flex;
             justify-content: flex-start;
+            animation: fadeInDown 0.5s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .logo {
             height: 12mm;
             width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         /* Content Section */
         .content {
             padding: 0 8mm;
             z-index: 10;
+            animation: fadeInUp 0.5s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .name {
             font-size: 14pt;
             font-weight: 700;
-            color: #0D3B3E; /* Vital Dark */
+            color: var(--vital-dark);
             margin: 0;
             line-height: 1.2;
+            letter-spacing: -0.02em;
         }
 
         .role {
             font-size: 8pt;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #FCB016; /* Vital Yellow */
+            letter-spacing: 1px;
+            color: var(--vital-yellow);
             margin-top: 2px;
             margin-bottom: 4mm;
         }
@@ -74,16 +131,31 @@
 
         .contact-item {
             font-size: 7pt;
-            color: #475569;
+            color: var(--text-secondary);
             display: flex;
             align-items: center;
             gap: 2mm;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            padding: 1mm 0;
+            border-radius: 2px;
+        }
+
+        .contact-item:hover {
+            color: var(--vital-green);
+            transform: translateX(2px);
         }
 
         .contact-item svg {
             width: 3mm;
             height: 3mm;
-            color: #006D65; /* Vital Green */
+            color: var(--vital-green);
+            transition: transform 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .contact-item:hover svg {
+            transform: scale(1.15);
         }
 
         /* Bottom Gradient Section */
@@ -93,7 +165,7 @@
             left: 0;
             width: 100%;
             height: 35%;
-            background: linear-gradient(135deg, #006D65 0%, #00A89C 100%);
+            background: linear-gradient(135deg, var(--vital-green) 0%, var(--vital-green-light) 100%);
             clip-path: ellipse(150% 100% at 50% 100%);
             z-index: 1;
         }
@@ -116,9 +188,144 @@
             right: 0;
             width: 80%;
             height: 55%;
-            background: rgba(252, 176, 22, 0.1); /* Yellow accent */
+            background: rgba(252, 176, 22, 0.1);
             clip-path: ellipse(100% 100% at 70% 100%);
             z-index: 0;
+        }
+
+        /* ============================================
+           MOBILE RESPONSIVE STYLES
+           ============================================ */
+        @media (max-width: 480px) {
+            body {
+                padding: 24px 16px;
+                min-height: 100vh;
+                min-height: 100dvh;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 340px;
+                height: auto;
+                min-height: 280px;
+                padding-bottom: 60px;
+                border-radius: 16px;
+            }
+
+            /* Center header/logo on mobile */
+            .header {
+                padding: 24px 24px 16px;
+                justify-content: center;
+            }
+
+            .logo {
+                height: 40px;
+            }
+
+            /* Center all content on mobile */
+            .content {
+                padding: 8px 24px 24px;
+                text-align: center;
+            }
+
+            .name {
+                font-size: 22px;
+                text-align: center;
+            }
+
+            .role {
+                font-size: 11px;
+                text-align: center;
+                margin-bottom: 20px;
+                letter-spacing: 1.5px;
+            }
+
+            .contact-info {
+                align-items: center;
+                gap: 12px;
+            }
+
+            .contact-item {
+                font-size: 14px;
+                justify-content: center;
+                padding: 8px 12px;
+                width: 100%;
+            }
+
+            .contact-item svg {
+                width: 18px;
+                height: 18px;
+            }
+
+            /* Adjust decorative elements for mobile */
+            .footer-gradient {
+                height: 25%;
+                clip-path: ellipse(120% 100% at 50% 100%);
+            }
+
+            .curve-1 {
+                height: 35%;
+            }
+
+            .curve-2 {
+                height: 40%;
+            }
+        }
+
+        /* Tablet styles */
+        @media (min-width: 481px) and (max-width: 768px) {
+            body {
+                padding: 32px 24px;
+            }
+
+            .card {
+                width: 320px;
+                height: auto;
+                min-height: 220px;
+                padding-bottom: 40px;
+                border-radius: 8px;
+            }
+
+            .header {
+                padding: 20px 24px 12px;
+                justify-content: center;
+            }
+
+            .logo {
+                height: 36px;
+            }
+
+            .content {
+                padding: 8px 24px 20px;
+                text-align: center;
+            }
+
+            .name {
+                font-size: 20px;
+                text-align: center;
+            }
+
+            .role {
+                font-size: 10px;
+                text-align: center;
+                margin-bottom: 16px;
+            }
+
+            .contact-info {
+                align-items: center;
+                gap: 10px;
+            }
+
+            .contact-item {
+                font-size: 13px;
+                justify-content: center;
+                padding: 6px 10px;
+            }
+
+            .contact-item svg {
+                width: 16px;
+                height: 16px;
+            }
         }
 
         /* Print Settings */
@@ -129,15 +336,38 @@
                 margin: 0;
             }
             .card {
+                width: 85mm;
+                height: 55mm;
                 box-shadow: none;
                 page-break-inside: avoid;
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
+                border-radius: 0;
+                padding-bottom: 0;
+                min-height: auto;
+            }
+            .header {
+                justify-content: flex-start;
+                padding: 6mm 8mm 0;
+            }
+            .content {
+                text-align: left;
+                padding: 0 8mm;
+            }
+            .name, .role {
+                text-align: left;
+            }
+            .contact-info {
+                align-items: flex-start;
+            }
+            .contact-item {
+                justify-content: flex-start;
+            }
+            .logo {
+                height: 12mm;
             }
         }
     </style>
-    <!-- Importing Inter font -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -148,7 +378,6 @@
 
         <!-- Header -->
         <div class="header">
-            <!-- Using the SVG path directly if image not available, but linking to public file -->
             <img src="../../public/logo_vitaltech.svg" alt="Vitaltech Logo" class="logo">
         </div>
 
@@ -158,21 +387,21 @@
             <div class="role">Sales Manager</div>
 
             <div class="contact-info">
-                <div class="contact-item">
+                <a href="tel:+421908601202" class="contact-item">
                     <!-- Phone Icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                     +421 908 601 202
-                </div>
-                <div class="contact-item">
+                </a>
+                <a href="mailto:peter.cincura@vitaltech.sk" class="contact-item">
                     <!-- Mail Icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
                     peter.cincura@vitaltech.sk
-                </div>
-                <div class="contact-item">
+                </a>
+                <a href="https://www.vitaltech.sk" target="_blank" rel="noopener" class="contact-item">
                     <!-- Globe Icon -->
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
                     www.vitaltech.sk
-                </div>
+                </a>
             </div>
         </div>
 
@@ -182,4 +411,3 @@
 
 </body>
 </html>
-
