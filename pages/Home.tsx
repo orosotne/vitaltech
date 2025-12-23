@@ -136,7 +136,7 @@ const Home: React.FC = () => {
               </div>
 
               {/* Floating Card: Right Side - Results Metric */}
-              <div className="absolute top-0 right-[-20px] bg-vital-yellow rounded-3xl py-5 px-6 shadow-xl shadow-yellow-500/20 border border-white/20 animate-fade-up-delay-2 text-center">
+              <div className="absolute top-0 right-0 bg-vital-yellow rounded-3xl py-5 px-6 shadow-xl shadow-yellow-500/20 border border-white/20 animate-fade-up-delay-2 text-center">
                  <div className="text-xs text-vital-dark/60 font-bold uppercase tracking-wider mb-2">ROI klientov</div>
                  <div className="text-3xl font-bold text-vital-dark mb-1">
                    <AnimatedCounter end={127} prefix="+" suffix="%" duration={2500} />
@@ -145,7 +145,7 @@ const Home: React.FC = () => {
               </div>
 
               {/* Floating Card 3: Bottom Left - Client Badge */}
-              <div className="absolute bottom-16 left-[-30px] bg-white rounded-2xl p-4 shadow-xl flex items-center gap-4 pr-6 animate-float" style={{animationDelay: '1s'}}>
+              <div className="absolute bottom-16 left-0 bg-white rounded-2xl p-4 shadow-xl flex items-center gap-4 pr-6 animate-float" style={{animationDelay: '1s'}}>
                  <div className="w-12 h-12 rounded-xl bg-vital-green/10 flex items-center justify-center text-vital-green">
                     <CheckCircle2 size={24} />
                  </div>
@@ -188,7 +188,7 @@ const Home: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {servicesData.map((service, idx) => (
-              <div key={service.id} className="group relative bg-vital-soft rounded-[2.5rem] p-8 lg:p-10 transition-all duration-500 hover:bg-vital-dark hover:text-white hover:-translate-y-2 overflow-hidden">
+              <div key={service.id} className="group relative bg-vital-soft rounded-2xl md:rounded-[2.5rem] p-6 md:p-8 lg:p-10 transition-all duration-500 hover:bg-vital-dark hover:text-white hover:-translate-y-2 overflow-hidden">
                 {/* Clean hover gradient overlay */}
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,rgba(0,109,101,0.3),transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 
@@ -223,7 +223,7 @@ const Home: React.FC = () => {
       </Section>
 
       {/* 3. WHY US - Grid Layout */}
-      <section id="why-us" className="py-32 bg-vital-dark text-white relative overflow-hidden">
+      <section id="why-us" className="py-16 md:py-32 bg-vital-dark text-white relative overflow-hidden">
         {/* Clean Gradient Atmosphere */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20"></div>
         {/* Top-right radial glow */}
@@ -256,7 +256,7 @@ const Home: React.FC = () => {
                    { icon: Zap, title: 'Proaktívny prístup', desc: 'Riešime problémy skôr, ako vzniknú.' },
                    { icon: Users, title: 'Osobný manager', desc: 'Jeden kontakt pre všetko.' },
                  ].map((item, idx) => (
-                   <div key={idx} className="bg-white/5 backdrop-blur-md p-8 rounded-3xl border border-white/10 hover:bg-white/10 transition-all duration-500 hover:-translate-y-2">
+                   <div key={idx} className="bg-white/5 backdrop-blur-md p-6 md:p-8 rounded-2xl md:rounded-3xl border border-white/10 hover:bg-white/10 transition-all duration-500 hover:-translate-y-2">
                       <item.icon className="text-vital-yellow mb-6" size={32} />
                       <h4 className="font-heading font-bold text-xl mb-2">{item.title}</h4>
                       <p className="text-slate-400 font-medium text-sm leading-relaxed">{item.desc}</p>
@@ -287,7 +287,7 @@ const Home: React.FC = () => {
                   <div className="w-24 h-24 bg-white rounded-full border-4 border-vital-soft shadow-lg flex items-center justify-center font-heading font-bold text-3xl text-vital-green relative z-10 group-hover:scale-110 transition-transform duration-300">
                     {s.step}
                   </div>
-                  <div className="mt-8 bg-white p-8 rounded-3xl w-full shadow-sm border border-white group-hover:shadow-xl transition-all">
+                  <div className="mt-8 bg-white p-6 md:p-8 rounded-2xl md:rounded-3xl w-full shadow-sm border border-white group-hover:shadow-xl transition-all">
                     <h3 className="font-heading font-bold text-xl mb-3 text-vital-dark">{s.title}</h3>
                     <p className="text-slate-600 font-medium">{s.desc}</p>
                   </div>
@@ -298,9 +298,9 @@ const Home: React.FC = () => {
       </Section>
 
       {/* 5. CTA SECTION - Large Typography */}
-      <section className="py-32 bg-white">
+      <section className="py-16 md:py-32 bg-white">
         <Container>
-          <div className="bg-vital-yellow rounded-[4rem] p-12 md:p-24 text-center relative overflow-hidden">
+          <div className="bg-vital-yellow rounded-3xl md:rounded-[4rem] p-8 md:p-24 text-center relative overflow-hidden">
              {/* Abstract organic blob gradients */}
              {/* Large warm blob - top left */}
              <div className="absolute -top-20 -left-20 w-80 h-80 bg-[radial-gradient(ellipse_at_center,rgba(251,146,60,0.4),transparent_70%)] rounded-full"></div>
@@ -318,7 +318,7 @@ const Home: React.FC = () => {
              <div className="absolute bottom-10 left-20 w-56 h-56 bg-[radial-gradient(ellipse_at_center,rgba(253,186,116,0.35),transparent_65%)] rounded-full -rotate-6"></div>
 
              <div className="relative z-10 max-w-4xl mx-auto">
-               <H2 className="!text-5xl md:!text-7xl mb-10 leading-tight">
+               <H2 className="!text-3xl sm:!text-5xl md:!text-7xl mb-10 leading-tight">
                  Máte víziu? <br/>
                  <span className="text-white drop-shadow-sm">My máme riešenie.</span>
                </H2>

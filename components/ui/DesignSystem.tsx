@@ -17,13 +17,13 @@ export const Section: React.FC<{ children: React.ReactNode; className?: string; 
 
 // --- TYPOGRAPHY ---
 export const H1: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = '' }) => (
-  <h1 className={`text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-vital-dark leading-[1.05] ${className}`}>
+  <h1 className={`text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-vital-dark leading-[1.05] ${className}`}>
     {children}
   </h1>
 );
 
 export const H2: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = '' }) => (
-  <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-vital-dark ${className}`}>
+  <h2 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-vital-dark ${className}`}>
     {children}
   </h2>
 );
@@ -73,7 +73,7 @@ export const Button: React.FC<ButtonProps> = ({ children, variant = 'primary', t
 };
 
 export const Card: React.FC<{ children: React.ReactNode; className?: string; hover?: boolean }> = ({ children, className = '', hover = true }) => (
-  <div className={`bg-white rounded-4xl p-8 md:p-10 border border-white shadow-sm ${hover ? 'transition-all duration-500 hover:shadow-2xl hover:shadow-vital-dark/5 hover:-translate-y-2' : ''} ${className}`}>
+  <div className={`bg-white rounded-2xl md:rounded-4xl p-6 md:p-8 lg:p-10 border border-white shadow-sm ${hover ? 'transition-all duration-500 hover:shadow-2xl hover:shadow-vital-dark/5 hover:-translate-y-2' : ''} ${className}`}>
     {children}
   </div>
 );

@@ -58,7 +58,7 @@ const HolidayPopup: React.FC = () => {
           }}
         >
           {/* Main Card */}
-          <div className="relative bg-vital-dark rounded-4xl p-10 md:p-12 shadow-2xl border border-white/10 overflow-hidden">
+          <div className="relative bg-vital-dark rounded-3xl md:rounded-4xl p-6 sm:p-10 md:p-12 shadow-2xl border border-white/10 overflow-hidden">
             
             {/* Clean Background Gradient */}
             <div className="absolute inset-0 bg-gradient-to-b from-[#0a3d3f] via-vital-dark to-vital-dark" />
@@ -142,7 +142,7 @@ const HolidayPopup: React.FC = () => {
               </div>
 
               {/* Main Heading */}
-              <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4 leading-tight">
+              <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold mb-4 leading-tight">
                 {newYear ? (
                   <>
                     <span className="text-white">Šťastný</span>{' '}

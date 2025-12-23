@@ -98,7 +98,7 @@ const Contact: React.FC = () => {
                   </Button>
                 </Card>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100">
+                <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6 bg-white p-5 sm:p-6 md:p-8 rounded-2xl md:rounded-[2rem] shadow-xl shadow-slate-200/50 border border-slate-100">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm font-medium text-slate-700">Meno a priezvisko *</label>
@@ -257,7 +257,7 @@ const Contact: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-slate-900 text-slate-300 p-8 rounded-3xl">
+              <div className="bg-slate-900 text-slate-300 p-6 md:p-8 rounded-2xl md:rounded-3xl">
                 <h3 className="text-white font-bold text-lg mb-4">Čo sa stane po odoslaní?</h3>
                 <ol className="space-y-4 relative border-l border-slate-700 ml-2 pl-6">
                   <li className="relative">

@@ -201,7 +201,7 @@ export const Navbar: React.FC = () => {
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-vital-dark text-slate-300 py-24 rounded-t-[4rem] mt-12 relative overflow-hidden">
+    <footer className="bg-vital-dark text-slate-300 py-16 md:py-24 rounded-t-3xl md:rounded-t-[4rem] mt-12 relative overflow-hidden">
       {/* Clean Gradient Atmosphere */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-transparent to-transparent"></div>
       {/* Subtle teal glow - top left */}
@@ -210,10 +210,10 @@ export const Footer: React.FC = () => {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_50%_at_100%_100%,rgba(13,59,62,0.3),transparent)] pointer-events-none"></div>
       
       <Container className="relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
           
           {/* Brand */}
-          <div className="lg:col-span-4 space-y-6">
+          <div className="col-span-1 md:col-span-2 lg:col-span-4 space-y-6">
             <Link to="/" className="inline-block">
               <img 
                 src="/white.svg" 
@@ -232,8 +232,8 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Links */}
-          <div className="lg:col-span-2 lg:col-start-6">
-            <h3 className="text-white font-bold text-lg mb-8 font-heading">Služby</h3>
+          <div className="col-span-1 lg:col-span-2 lg:col-start-6">
+            <h3 className="text-white font-bold text-lg mb-6 md:mb-8 font-heading">Služby</h3>
             <ul className="space-y-4">
               <li><Link to="/eventy-a-priestory" className="hover:text-vital-yellow transition-colors">Eventy & Priestory</Link></li>
               <li><Link to="/it-servis" className="hover:text-vital-yellow transition-colors">IT Servis & PC</Link></li>
@@ -242,8 +242,8 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          <div className="lg:col-span-2">
-            <h3 className="text-white font-bold text-lg mb-8 font-heading">Spoločnosť</h3>
+          <div className="col-span-1 lg:col-span-2">
+            <h3 className="text-white font-bold text-lg mb-6 md:mb-8 font-heading">Spoločnosť</h3>
             <ul className="space-y-4">
               <li><Link to="/o-nas" className="hover:text-vital-yellow transition-colors">O nás</Link></li>
               <li><Link to="/kontakt" className="hover:text-vital-yellow transition-colors">Kontakt</Link></li>
@@ -251,8 +251,8 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          <div className="lg:col-span-3">
-            <h3 className="text-white font-bold text-lg mb-8 font-heading">Kontakt</h3>
+          <div className="col-span-1 md:col-span-2 lg:col-span-3">
+            <h3 className="text-white font-bold text-lg mb-6 md:mb-8 font-heading">Kontakt</h3>
             <ul className="space-y-6">
               <li className="flex items-start gap-4">
                 <div className="w-8 h-8 rounded-full bg-vital-yellow/10 flex items-center justify-center text-vital-yellow mt-1">

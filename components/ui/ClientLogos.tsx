@@ -52,8 +52,8 @@ const ClientLogos: React.FC<ClientLogosProps> = ({
       {/* Infinite scroll container */}
       <div className="relative">
         {/* Gradient fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
         {/* Scrolling track */}
         <div className="flex animate-scroll">
@@ -63,10 +63,10 @@ const ClientLogos: React.FC<ClientLogosProps> = ({
               href={partner.website}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-shrink-0 mx-8 md:mx-12 group"
+              className="flex-shrink-0 mx-4 sm:mx-8 md:mx-12 group"
               title={partner.name}
             >
-              <div className="w-40 h-20 md:w-48 md:h-24 bg-slate-50 rounded-2xl flex items-center justify-center border border-slate-100 group-hover:bg-vital-soft group-hover:border-vital-green/20 group-hover:shadow-lg group-hover:shadow-vital-green/10 transition-all duration-300 p-4">
+              <div className="w-32 h-16 sm:w-40 sm:h-20 md:w-48 md:h-24 bg-slate-50 rounded-xl sm:rounded-2xl flex items-center justify-center border border-slate-100 group-hover:bg-vital-soft group-hover:border-vital-green/20 group-hover:shadow-lg group-hover:shadow-vital-green/10 transition-all duration-300 p-3 sm:p-4">
                 <img 
                   src={partner.logo} 
                   alt={partner.name}

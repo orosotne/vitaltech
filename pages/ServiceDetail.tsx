@@ -37,9 +37,9 @@ const ServiceDetail: React.FC = () => {
             </div>
             
             {/* Hero Image */}
-            <div className="w-full lg:w-1/2 relative">
-               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-teal-500/10 blur-[80px] rounded-full pointer-events-none" />
-               <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl shadow-teal-900/10 rotate-2 hover:rotate-0 transition-all duration-700 group">
+            <div className="w-full lg:w-1/2 relative overflow-hidden">
+               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-teal-500/10 blur-[80px] rounded-full pointer-events-none" />
+               <div className="relative rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-2xl shadow-teal-900/10 lg:rotate-2 lg:hover:rotate-0 transition-all duration-700 group">
                   <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors z-10" />
                   <img 
                     src={service.image} 

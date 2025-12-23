@@ -30,7 +30,7 @@ const Realizations: React.FC = () => {
               <button
                 key={tab.id}
                 onClick={() => setFilter(tab.id as any)}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
+                className={`px-4 sm:px-6 py-2 rounded-full text-sm font-medium transition-all ${
                   filter === tab.id 
                     ? 'bg-teal-700 text-white shadow-md shadow-teal-700/20' 
                     : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'

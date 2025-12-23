@@ -26,7 +26,7 @@ const ServicesHub: React.FC = () => {
               <div key={service.id} className={`flex flex-col lg:flex-row gap-12 items-center ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
                 
                 {/* Image */}
-                <div className="w-full lg:w-1/2 aspect-[4/3] bg-slate-100 rounded-[2.5rem] relative overflow-hidden group shadow-2xl shadow-slate-200">
+                <div className="w-full lg:w-1/2 aspect-[4/3] bg-slate-100 rounded-2xl md:rounded-[2.5rem] relative overflow-hidden group shadow-2xl shadow-slate-200">
                    <img 
                      src={service.image} 
                      alt={service.title} 

@@ -36,7 +36,7 @@ const About: React.FC = () => {
 
               {/* Main headline with gradient text */}
               <h1 
-                className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] text-white"
+                className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] text-white"
                 style={{ animation: 'fadeUp 0.6s ease-out 0.1s forwards', opacity: 0 }}
               >
                 Traja odborníci.<br />
@@ -55,7 +55,7 @@ const About: React.FC = () => {
 
               {/* Stats row */}
               <div 
-                className="flex flex-wrap gap-12 pt-8 border-t border-white/10"
+                className="flex flex-wrap gap-6 sm:gap-12 pt-8 border-t border-white/10"
                 style={{ animation: 'fadeUp 0.6s ease-out 0.3s forwards', opacity: 0 }}
               >
                 {[
@@ -74,10 +74,10 @@ const About: React.FC = () => {
             </div>
 
             {/* Right side - floating cards composition */}
-            <div className="lg:col-span-5 relative h-[500px] hidden lg:block">
+            <div className="lg:col-span-5 relative h-[400px] md:h-[500px] hidden md:block overflow-hidden">
               {/* Main image card */}
               <div 
-                className="absolute top-0 right-0 w-80 h-96 rounded-[2rem] overflow-hidden shadow-2xl shadow-black/40 border border-white/10"
+                className="absolute top-0 right-0 w-64 md:w-80 h-80 md:h-96 rounded-[2rem] overflow-hidden shadow-2xl shadow-black/40 border border-white/10"
                 style={{ animation: 'fadeUp 0.8s ease-out 0.4s forwards', opacity: 0 }}
               >
                 <img 
@@ -90,20 +90,20 @@ const About: React.FC = () => {
 
               {/* Floating accent card 1 */}
               <div 
-                className="absolute bottom-20 left-0 bg-vital-yellow rounded-2xl p-6 shadow-xl shadow-yellow-500/20"
+                className="absolute bottom-20 left-0 bg-vital-yellow rounded-2xl p-4 md:p-6 shadow-xl shadow-yellow-500/20"
                 style={{ animation: 'fadeUp 0.8s ease-out 0.5s forwards', opacity: 0 }}
               >
                 <div className="text-vital-dark">
-                  <div className="text-3xl font-bold mb-1">
+                  <div className="text-2xl md:text-3xl font-bold mb-1">
                   <AnimatedCounter end={50} suffix="+" duration={2000} />
                 </div>
-                  <div className="text-sm font-medium opacity-70">projektov ročne</div>
+                  <div className="text-xs md:text-sm font-medium opacity-70">projektov ročne</div>
                 </div>
               </div>
 
               {/* Floating accent card 2 */}
               <div 
-                className="absolute top-20 left-10 bg-white/10 backdrop-blur-md rounded-2xl p-5 border border-white/20"
+                className="absolute top-20 left-4 md:left-10 bg-white/10 backdrop-blur-md rounded-2xl p-4 md:p-5 border border-white/20"
                 style={{ animation: 'fadeUp 0.8s ease-out 0.6s forwards', opacity: 0 }}
               >
                 <div className="flex items-center gap-3">
@@ -123,7 +123,7 @@ const About: React.FC = () => {
       </section>
 
       {/* STORY SECTION - Editorial layout */}
-      <section className="py-32 bg-white relative">
+      <section className="py-16 md:py-32 bg-white relative">
         {/* Subtle texture */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.03)_1px,transparent_0)] bg-[length:24px_24px]"></div>
         
@@ -161,22 +161,22 @@ const About: React.FC = () => {
             </div>
 
             {/* Right - Overlapping images */}
-            <div className="relative h-[600px]">
+            <div className="relative h-[400px] md:h-[600px] overflow-hidden">
               {/* Main large image */}
-              <div className="absolute top-0 right-0 w-4/5 h-4/5 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-300/50 border-8 border-white">
+              <div className="absolute top-0 right-0 w-full md:w-4/5 h-4/5 rounded-2xl md:rounded-[2.5rem] overflow-hidden shadow-2xl shadow-slate-300/50 border-4 md:border-8 border-white">
                 <div className="absolute inset-0 bg-gradient-to-br from-vital-green to-teal-600"></div>
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center text-white">
-                    <Users className="w-20 h-20 mx-auto mb-4 opacity-80" />
-                    <div className="text-2xl font-bold">Tím profesionálov</div>
+                    <Users className="w-16 md:w-20 h-16 md:h-20 mx-auto mb-4 opacity-80" />
+                    <div className="text-xl md:text-2xl font-bold">Tím profesionálov</div>
                   </div>
                 </div>
               </div>
 
               {/* Accent card */}
-              <div className="absolute bottom-0 left-0 bg-vital-yellow rounded-3xl p-8 shadow-xl shadow-yellow-500/30 max-w-xs">
+              <div className="absolute bottom-0 left-0 bg-vital-yellow rounded-2xl md:rounded-3xl p-6 md:p-8 shadow-xl shadow-yellow-500/30 max-w-[280px] md:max-w-xs">
                 <blockquote className="text-vital-dark">
-                  <p className="text-lg font-medium leading-relaxed mb-4">
+                  <p className="text-base md:text-lg font-medium leading-relaxed mb-3 md:mb-4">
                     "Technológie a kreativita majú ísť ruka v ruke."
                   </p>
                   <footer className="text-sm font-bold opacity-70">— Tím Vitaltech</footer>
@@ -184,8 +184,8 @@ const About: React.FC = () => {
               </div>
 
               {/* Decorative element */}
-              <div className="absolute top-1/2 left-1/4 w-32 h-32 rounded-full bg-vital-soft border-4 border-white shadow-lg flex items-center justify-center">
-                <Sparkles className="w-10 h-10 text-vital-green" />
+              <div className="absolute top-1/2 left-1/4 w-24 md:w-32 h-24 md:h-32 rounded-full bg-vital-soft border-4 border-white shadow-lg hidden md:flex items-center justify-center">
+                <Sparkles className="w-8 md:w-10 h-8 md:h-10 text-vital-green" />
               </div>
             </div>
           </div>
@@ -193,7 +193,7 @@ const About: React.FC = () => {
       </section>
 
       {/* VALUES SECTION - Bold cards */}
-      <section className="py-32 bg-vital-soft relative overflow-hidden">
+      <section className="py-16 md:py-32 bg-vital-soft relative overflow-hidden">
         {/* Background decoration */}
         <div className="absolute top-0 right-0 w-1/2 h-full bg-[radial-gradient(ellipse_100%_100%_at_100%_0%,rgba(0,109,101,0.08),transparent)]"></div>
         
@@ -238,7 +238,7 @@ const About: React.FC = () => {
             ].map((val, idx) => (
               <div 
                 key={idx} 
-                className="group relative bg-white rounded-[2rem] p-10 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-slate-300/50 transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+                className="group relative bg-white rounded-2xl md:rounded-[2rem] p-6 md:p-10 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-slate-300/50 transition-all duration-500 hover:-translate-y-2 overflow-hidden"
               >
                 {/* Hover gradient overlay */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${val.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
@@ -269,7 +269,7 @@ const About: React.FC = () => {
       </section>
 
       {/* WHY US - Feature highlights */}
-      <section className="py-32 bg-vital-dark text-white relative overflow-hidden">
+      <section className="py-16 md:py-32 bg-vital-dark text-white relative overflow-hidden">
         {/* Background gradient atmosphere */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_0%,rgba(0,109,101,0.3),transparent)]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_100%_100%,rgba(252,176,22,0.1),transparent)]"></div>
@@ -323,9 +323,9 @@ const About: React.FC = () => {
       </section>
 
       {/* CTA SECTION */}
-      <section className="py-32 bg-white">
+      <section className="py-16 md:py-32 bg-white">
         <Container>
-          <div className="bg-gradient-to-br from-vital-green to-teal-600 rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden">
+          <div className="bg-gradient-to-br from-vital-green to-teal-600 rounded-3xl md:rounded-[3rem] p-8 md:p-20 text-center relative overflow-hidden">
             {/* Decorative elements */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,rgba(255,255,255,0.2),transparent_50%)]"></div>
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,rgba(0,0,0,0.2),transparent_50%)]"></div>

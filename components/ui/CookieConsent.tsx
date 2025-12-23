@@ -72,7 +72,7 @@ const CookieConsent: React.FC = () => {
           <div className="bg-white rounded-3xl shadow-2xl shadow-slate-900/10 border border-slate-100 overflow-hidden">
             
             {/* Main Content */}
-            <div className="p-6 md:p-8">
+            <div className="p-4 sm:p-6 md:p-8">
               <div className="flex flex-col lg:flex-row lg:items-start gap-6">
                 
                 {/* Icon & Text */}
@@ -108,23 +108,23 @@ const CookieConsent: React.FC = () => {
                 </div>
 
                 {/* Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3 lg:flex-shrink-0">
+                <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 lg:flex-shrink-0 w-full sm:w-auto">
                   <button
                     onClick={handleRejectAll}
-                    className="px-6 py-3 rounded-full text-sm font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all duration-300"
+                    className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm font-bold text-slate-600 bg-slate-100 hover:bg-slate-200 transition-all duration-300"
                   >
                     Odmietnuť
                   </button>
                   <button
                     onClick={() => setShowDetails(!showDetails)}
-                    className="px-6 py-3 rounded-full text-sm font-bold text-vital-dark border-2 border-slate-200 hover:border-vital-dark transition-all duration-300 flex items-center justify-center gap-2"
+                    className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm font-bold text-vital-dark border-2 border-slate-200 hover:border-vital-dark transition-all duration-300 flex items-center justify-center gap-2"
                   >
                     <Settings className="w-4 h-4" />
                     Nastavenia
                   </button>
                   <button
                     onClick={handleAcceptAll}
-                    className="px-6 py-3 rounded-full text-sm font-bold text-white bg-vital-dark hover:bg-slate-800 shadow-lg shadow-vital-dark/20 transition-all duration-300 hover:-translate-y-0.5"
+                    className="px-4 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm font-bold text-white bg-vital-dark hover:bg-slate-800 shadow-lg shadow-vital-dark/20 transition-all duration-300 hover:-translate-y-0.5"
                   >
                     Prijať všetky
                   </button>

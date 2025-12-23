@@ -1,12 +1,14 @@
 import express from 'express';
 import cors from 'cors';
-import { Resend } from 'resend';
+import { MailerSend, EmailParams, Sender, Recipient } from 'mailersend';
 
 const app = express();
 const PORT = 3001;
 
-// Initialize Resend with API key from environment
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize MailerSend with API key from environment
+const mailerSend = new MailerSend({
+  apiKey: process.env.MAILERSEND_API_KEY,
+});
 
 app.use(cors({
   origin: ['http://localhost:3000', 'http://127.0.0.1:3000'],
@@ -40,20 +42,23 @@ app.post('/api/contact', async (req, res) => {
     const serviceName = serviceNames[service] || service;
 
     // 1. Send confirmation email to the customer
-    const customerEmail = await resend.emails.send({
-      from: 'Vitaltech <noreply@vitaltech.sk>',
-      to: email,
-      subject: 'Ďakujeme za váš dopyt | Vitaltech',
-      html: generateCustomerEmail({ name, serviceName, message })
-    });
+    const customerEmailParams = new EmailParams()
+      .setFrom(new Sender('info@vitaltech.sk', 'Vitaltech'))
+      .setTo([new Recipient(email, name)])
+      .setSubject('Ďakujeme za váš dopyt | Vitaltech')
+      .setHtml(generateCustomerEmail({ name, serviceName, message }));
+
+    const customerEmail = await mailerSend.email.send(customerEmailParams);
 
     // 2. Send notification email to internal team
-    const teamEmail = await resend.emails.send({
-      from: 'Kontaktný formulár <noreply@vitaltech.sk>',
-      to: 'info@vitaltech.sk',
-      subject: `Nový dopyt: ${serviceName} - ${name}`,
-      html: generateTeamNotificationEmail({ name, company, email, phone, serviceName, message })
-    });
+    const teamEmailParams = new EmailParams()
+      .setFrom(new Sender('info@vitaltech.sk', 'Kontaktný formulár'))
+      .setTo([new Recipient('info@vitaltech.sk', 'Vitaltech Team')])
+      .setReplyTo(new Recipient(email, name))
+      .setSubject(`Nový dopyt: ${serviceName} - ${name}`)
+      .setHtml(generateTeamNotificationEmail({ name, company, email, phone, serviceName, message }));
+
+    const teamEmail = await mailerSend.email.send(teamEmailParams);
 
     console.log('✅ Emails sent successfully:', { customerEmail, teamEmail });
 
@@ -325,6 +330,5 @@ app.get('/api/health', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`🚀 API Server running on http://localhost:${PORT}`);
-  console.log(`📧 Resend API Key: ${process.env.RESEND_API_KEY ? '✅ Set' : '❌ Not set'}`);
+  console.log(`📧 MailerSend API Key: ${process.env.MAILERSEND_API_KEY ? '✅ Set' : '❌ Not set'}`);
 });
-

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitaltech Business Card</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Business Card Container - Exact dimensions for print (85mm x 55mm) */
+        .card {
+            width: 85mm;
+            height: 55mm;
+            position: relative;
+            background: white;
+            border-radius: 0; /* Sharp edges for print, or small radius if desired */
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* Top Section with Logo */
+        .header {
+            padding: 6mm 8mm 0;
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .logo {
+            height: 12mm;
+            width: auto;
+        }
+
+        /* Content Section */
+        .content {
+            padding: 0 8mm;
+            z-index: 10;
+        }
+
+        .name {
+            font-size: 14pt;
+            font-weight: 700;
+            color: #0D3B3E; /* Vital Dark */
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .role {
+            font-size: 8pt;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #FCB016; /* Vital Yellow */
+            margin-top: 2px;
+            margin-bottom: 4mm;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5mm;
+        }
+
+        .contact-item {
+            font-size: 7pt;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            gap: 2mm;
+        }
+
+        .contact-item svg {
+            width: 3mm;
+            height: 3mm;
+            color: #006D65; /* Vital Green */
+        }
+
+        /* Bottom Gradient Section */
+        .footer-gradient {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 35%;
+            background: linear-gradient(135deg, #006D65 0%, #00A89C 100%);
+            clip-path: ellipse(150% 100% at 50% 100%);
+            z-index: 1;
+        }
+
+        /* Decorative Curves */
+        .curve-1 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 45%;
+            background: rgba(0, 109, 101, 0.1);
+            clip-path: ellipse(130% 100% at 30% 100%);
+            z-index: 0;
+        }
+
+        .curve-2 {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 80%;
+            height: 55%;
+            background: rgba(252, 176, 22, 0.1); /* Yellow accent */
+            clip-path: ellipse(100% 100% at 70% 100%);
+            z-index: 0;
+        }
+
+        /* Print Settings */
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+                margin: 0;
+            }
+            .card {
+                box-shadow: none;
+                page-break-inside: avoid;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+        }
+    </style>
+    <!-- Importing Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="card">
+        <!-- Background Curves -->
+        <div class="curve-1"></div>
+        <div class="curve-2"></div>
+
+        <!-- Header -->
+        <div class="header">
+            <!-- Using the SVG path directly if image not available, but linking to public file -->
+            <img src="../../public/logo_vitaltech.svg" alt="Vitaltech Logo" class="logo">
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <h1 class="name">Peter Činčura</h1>
+            <div class="role">Sales Manager</div>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <!-- Phone Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    +421 908 601 202
+                </div>
+                <div class="contact-item">
+                    <!-- Mail Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                    peter.cincura@vitaltech.sk
+                </div>
+                <div class="contact-item">
+                    <!-- Globe Icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    www.vitaltech.sk
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Gradient -->
+        <div class="footer-gradient"></div>
+    </div>
+
+</body>
+</html>
+
